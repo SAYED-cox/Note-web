@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Notes</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: auto; padding-top: 20px; }
+        input { width: 100%; padding: 10px; margin: 5px 0; }
+        button { padding: 10px; margin-top: 5px; width: 100%; }
+        .note { border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+        a { float: right; }
+    </style>
+</head>
+<body>
+<h2>Daily Notes <a href="/logout">Logout</a></h2>
+
+<form method="POST">
+    <input type="date" name="date" required value="{{ today }}">
+    <input type="text" name="class_no" placeholder="Class No" required>
+    <input type="text" name="topic" placeholder="Topic" required>
+    <button type="submit">Add Note</button>
+</form>
+
+<h3>All Notes</h3>
+{% for note in notes %}
+<div class="note">
+    <b>Date:</b> {{ note.date }} <br>
+    <b>Class No:</b> {{ note.class_no }} <br>
+    <b>Topic:</b> {{ note.topic }}
+</div>
+{% endfor %}
+</body>
+</html>
